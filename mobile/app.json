@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "name": "BarkBowl",
+    "slug": "barkbowl",
+    "version": "1.0.0",
+    "scheme": "barkbowl",
+    "orientation": "portrait",
+    "splash": { "backgroundColor": "#0d9488" },
+    "ios": { "supportsTablet": false },
+    "android": { "adaptiveIcon": { "backgroundColor": "#0d9488" } },
+    "plugins": ["expo-router"]
+  }
+}
