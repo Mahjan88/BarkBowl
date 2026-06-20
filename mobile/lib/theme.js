@@ -28,6 +28,7 @@ export const FONTS = {
     xxxl: 30,
   },
   weights: {
+    normal:     '400',
     regular:    '400',
     medium:     '500',
     semibold:   '600',

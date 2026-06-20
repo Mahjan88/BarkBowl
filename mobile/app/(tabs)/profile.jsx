@@ -10,6 +10,7 @@ import {
   Alert,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { useRouter } from 'expo-router'
 import { mockApi } from '../../lib/mockApi'
 import { useAuth } from '../../context/AuthContext'
 import { COLORS, FONTS, RADIUS, SPACING, shadow } from '../../lib/theme'
@@ -87,7 +88,8 @@ function DogForm({ dog, onSave, onCancel }) {
 
 export default function ProfileScreen() {
   const { user, signOut } = useAuth()
-  const [dogs, setDogs]       = useState([])
+  const router = useRouter()
+  const [dogs, setDogs] = useState([])
   const [loading, setLoading] = useState(true)
   const [showForm, setShowForm] = useState(false)
   const [editingDog, setEditingDog] = useState(null)
@@ -132,7 +134,10 @@ export default function ProfileScreen() {
       'Are you sure you want to sign out?',
       [
         { text: 'Cancel', style: 'cancel' },
-        { text: 'Sign Out', style: 'destructive', onPress: signOut },
+        { text: 'Sign Out', style: 'destructive', onPress: async () => {
+          await signOut()
+          router.replace('/(auth)')
+        }},
       ]
     )
   }

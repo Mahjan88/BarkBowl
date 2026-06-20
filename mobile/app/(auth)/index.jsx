@@ -16,23 +16,25 @@ import { useAuth } from '../../context/AuthContext'
 import { COLORS, FONTS, RADIUS, SPACING, shadow } from '../../lib/theme'
 
 export default function AuthScreen() {
-  const { signIn, signUp, user, loading } = useAuth()
+  const { signIn, signUp, user, loading, hasOnboarded } = useAuth()
   const router = useRouter()
   const [mode, setMode]         = useState('login') // 'login' | 'signup'
   const [email, setEmail]       = useState('')
   const [password, setPassword] = useState('')
   const [name, setName]         = useState('')
 
-  // Already logged in (mock mode) — go straight to tabs
-  if (user) return <Redirect href="/(tabs)" />
+  // Already logged in — route based on onboarding state
+  if (user && hasOnboarded)  return <Redirect href="/(tabs)" />
+  if (user && !hasOnboarded) return <Redirect href="/(onboarding)/pet-type" />
 
   const handleSubmit = async () => {
     if (mode === 'login') {
       await signIn(email, password)
+      // signIn sets hasOnboarded=true → Redirect to (tabs)
     } else {
       await signUp(email, password)
+      // signUp sets hasOnboarded=false → Redirect to onboarding
     }
-    // user state updates → <Redirect> above handles navigation automatically
   }
 
   return (
