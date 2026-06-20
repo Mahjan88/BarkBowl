@@ -131,3 +131,4 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 - Loyalty points system
 - Vet/nutritionist consultation booking
 - Admin dashboard for managing menu
+# BarkBowl
