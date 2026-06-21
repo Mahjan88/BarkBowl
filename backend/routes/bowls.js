@@ -23,11 +23,11 @@ router.get('/', requireAuth, async (req, res) => {
 
 // POST /api/bowls — save a custom bowl
 router.post('/', requireAuth, async (req, res) => {
-  const { dog_id, name, portion_oz, total_price, total_calories, ingredient_ids } = req.body
+  const { pet_id, name, portion_oz, total_price, total_calories, ingredient_ids } = req.body
 
   const { data: bowl, error: bowlErr } = await req.supabase
     .from('custom_bowls')
-    .insert({ user_id: req.user.id, dog_id, name, portion_oz, total_price, total_calories })
+    .insert({ user_id: req.user.id, pet_id, name, portion_oz, total_price, total_calories })
     .select()
     .single()
 

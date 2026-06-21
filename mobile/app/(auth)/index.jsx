@@ -47,7 +47,7 @@ export default function AuthScreen() {
           {/* Header */}
           <View style={styles.header}>
             <Text style={styles.logo}>🐾</Text>
-            <Text style={styles.brand}>BarkBowl</Text>
+            <Text style={styles.brand}>PawBowl</Text>
             <Text style={styles.tagline}>Fresh meals, happy tails</Text>
           </View>
 

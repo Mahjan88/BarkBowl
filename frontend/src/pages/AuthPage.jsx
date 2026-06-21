@@ -45,7 +45,7 @@ export default function AuthPage() {
         {/* Logo */}
         <div className="text-center mb-8">
           <span className="text-5xl">🐾</span>
-          <h1 className="text-3xl font-extrabold text-stone-800 mt-2">BarkBowl</h1>
+          <h1 className="text-3xl font-extrabold text-stone-800 mt-2">PawBowl</h1>
           <p className="text-stone-500 mt-1 text-sm">Fresh custom meals for your best friend</p>
         </div>
 

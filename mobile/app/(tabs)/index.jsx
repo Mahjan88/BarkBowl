@@ -11,7 +11,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useRouter } from 'expo-router'
 import { mockApi } from '../../lib/mockApi'
-import { MOCK_DOGS } from '../../lib/mockData'
+import { MOCK_PETS } from '../../lib/mockData'
 import { useCart } from '../../context/CartContext'
 import { COLORS, FONTS, RADIUS, SPACING, shadow } from '../../lib/theme'
 
@@ -32,7 +32,7 @@ export default function HomeScreen() {
   const [orders, setOrders] = useState([])
   const [loading, setLoading] = useState(true)
 
-  const dog = MOCK_DOGS[0]
+  const pet = MOCK_PETS[0]
 
   useEffect(() => {
     Promise.all([mockApi.get('/meals'), mockApi.get('/orders')])
@@ -59,7 +59,7 @@ export default function HomeScreen() {
       <View style={styles.header}>
         <View>
           <Text style={styles.greeting}>Hey there! 🐶</Text>
-          <Text style={styles.dogName}>
+          <Text style={styles.petName}>
             {dog ? `Feeding ${dog.name} today?` : 'Welcome back!'}
           </Text>
         </View>
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     color:      COLORS.primaryLight,
     fontWeight: FONTS.weights.medium,
   },
-  dogName: {
+  petName: {
     fontSize:   FONTS.sizes.xxl,
     color:      COLORS.white,
     fontWeight: FONTS.weights.bold,

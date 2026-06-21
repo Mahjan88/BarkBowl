@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "BarkBowl",
-    "slug": "barkbowl",
+    "name": "PawBowl",
+    "slug": "pawbowl",
     "version": "1.0.0",
-    "scheme": "barkbowl",
+    "scheme": "pawbowl",
     "orientation": "portrait",
     "splash": { "backgroundColor": "#0d9488" },
     "ios": { "supportsTablet": false },

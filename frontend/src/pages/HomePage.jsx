@@ -12,20 +12,20 @@ export default function HomePage() {
   const navigate = useNavigate()
 
   const [meals,    setMeals]    = useState([])
-  const [dog,      setDog]      = useState(null)
+  const [pet,      setPet]      = useState(null)
   const [orders,   setOrders]   = useState([])
   const [loading,  setLoading]  = useState(true)
 
   useEffect(() => {
     async function load() {
       try {
-        const [mealsData, dogsData, ordersData] = await Promise.all([
+        const [mealsData, petsData, ordersData] = await Promise.all([
           api.get('/meals'),
-          api.get('/dogs'),
+          api.get('/pets'),
           api.get('/orders'),
         ])
         setMeals(mealsData.slice(0, 4))
-        setDog(dogsData[0] || null)
+        setPet(petsData[0] || null)
         setOrders(ordersData.slice(0, 1))
       } catch (err) {
         console.error(err)
@@ -51,7 +51,7 @@ export default function HomePage() {
       <div className="bg-gradient-to-br from-teal-600 to-teal-700 text-white px-5 pt-12 pb-8 rounded-b-3xl">
         <p className="text-teal-200 text-sm font-medium">{greeting()}</p>
         <h1 className="text-2xl font-extrabold mt-0.5">
-          {dog ? `What's ${dog.name} eating today? 🐾` : 'Welcome to BarkBowl 🐾'}
+          {dog ? `What's ${dog.name} eating today? 🐾` : 'Welcome to PawBowl 🐾'}
         </h1>
         <p className="text-teal-100 text-sm mt-1">
           {dog

@@ -15,8 +15,8 @@ export default function CheckoutPage() {
   const { items, total, clearCart } = useCart()
   const navigate = useNavigate()
 
-  const [dogs,           setDogs]           = useState([])
-  const [dogId,          setDogId]          = useState('')
+  const [pets,           setPets]           = useState([])
+  const [petId,          setDogId]          = useState('')
   const [address,        setAddress]        = useState('')
   const [subscription,   setSubscription]   = useState(SUBSCRIPTION_OPTIONS[0])
   const [notes,          setNotes]          = useState('')
@@ -26,7 +26,7 @@ export default function CheckoutPage() {
   const [error,          setError]          = useState('')
 
   useEffect(() => {
-    api.get('/dogs').then(setDogs).catch(console.error)
+    api.get('/pets').then(setPets).catch(console.error)
   }, [])
 
   const discount    = total * subscription.discount
@@ -47,7 +47,7 @@ export default function CheckoutPage() {
       }))
 
       const order = await api.post('/orders', {
-        dog_id:            dogId || null,
+        pet_id:            petId || null,
         items:             orderItems,
         total_amount:      finalTotal,
         delivery_address:  address,
@@ -95,25 +95,25 @@ export default function CheckoutPage() {
 
       <div className="px-4 space-y-5">
         {/* Dog selection */}
-        {dogs.length > 0 && (
+        {pets.length > 0 && (
           <div>
-            <label className="block text-sm font-semibold text-stone-700 mb-2">For which dog?</label>
+            <label className="block text-sm font-semibold text-stone-700 mb-2">For which pet?</label>
             <div className="flex gap-2 flex-wrap">
               <button
                 onClick={() => setDogId('')}
                 className={`px-4 py-2 rounded-xl border-2 text-sm font-medium transition-all
-                            ${!dogId ? 'border-teal-500 bg-teal-50 text-teal-700' : 'border-stone-200 text-stone-600'}`}
+                            ${!petId ? 'border-teal-500 bg-teal-50 text-teal-700' : 'border-stone-200 text-stone-600'}`}
               >
-                All dogs
+                All pets
               </button>
-              {dogs.map(dog => (
+              {pets.map(pet => (
                 <button
-                  key={dog.id}
-                  onClick={() => setDogId(dog.id)}
+                  key={pet.id}
+                  onClick={() => setDogId(pet.id)}
                   className={`px-4 py-2 rounded-xl border-2 text-sm font-medium transition-all
-                              ${dogId === dog.id ? 'border-teal-500 bg-teal-50 text-teal-700' : 'border-stone-200 text-stone-600'}`}
+                              ${petId === pet.id ? 'border-teal-500 bg-teal-50 text-teal-700' : 'border-stone-200 text-stone-600'}`}
                 >
-                  🐶 {dog.name}
+                  🐶 {pet.name}
                 </button>
               ))}
             </div>
@@ -165,7 +165,7 @@ export default function CheckoutPage() {
           <label className="block text-sm font-semibold text-stone-700 mb-1">Notes (optional)</label>
           <input
             className="input"
-            placeholder="e.g. Leave at the door, dog has a salmon allergy"
+            placeholder="e.g. Leave at the door, pet has a salmon allergy"
             value={notes}
             onChange={e => setNotes(e.target.value)}
           />

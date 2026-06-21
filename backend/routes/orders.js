@@ -13,7 +13,7 @@ router.get('/', requireAuth, async (req, res) => {
         id, quantity, unit_price, item_name,
         meal_id, custom_bowl_id
       ),
-      dogs ( name, breed )
+      pets ( name, breed )
     `)
     .eq('user_id', req.user.id)
     .order('created_at', { ascending: false })
@@ -29,7 +29,7 @@ router.get('/:id', requireAuth, async (req, res) => {
     .select(`
       *,
       order_items ( * ),
-      dogs ( name, breed )
+      pets ( name, breed )
     `)
     .eq('id', req.params.id)
     .eq('user_id', req.user.id)
@@ -41,7 +41,7 @@ router.get('/:id', requireAuth, async (req, res) => {
 
 // POST /api/orders — place new order
 router.post('/', requireAuth, async (req, res) => {
-  const { dog_id, items, total_amount, delivery_address, subscription_type, notes } = req.body
+  const { pet_id, items, total_amount, delivery_address, subscription_type, notes } = req.body
 
   if (!items || items.length === 0) {
     return res.status(400).json({ error: 'Order must have at least one item' })
@@ -52,7 +52,7 @@ router.post('/', requireAuth, async (req, res) => {
     .from('orders')
     .insert({
       user_id: req.user.id,
-      dog_id,
+      pet_id,
       total_amount,
       delivery_address,
       subscription_type,

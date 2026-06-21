@@ -1,10 +1,10 @@
-import { MOCK_MEALS, MOCK_INGREDIENTS, MOCK_ORDERS, MOCK_DOGS } from './mockData'
+import { MOCK_MEALS, MOCK_INGREDIENTS, MOCK_ORDERS, MOCK_PETS } from './mockData'
 
 // Simulates network latency
 const delay = (ms = 300) => new Promise(r => setTimeout(r, ms))
 
 // In-memory state (persists for the session)
-let dogs   = [...MOCK_DOGS]
+let pets   = [...MOCK_PETS]
 let orders = [...MOCK_ORDERS]
 let bowls  = []
 let nextDogId   = 100
@@ -16,7 +16,7 @@ export const mockApi = {
 
     if (path === '/meals')       return [...MOCK_MEALS]
     if (path === '/ingredients') return [...MOCK_INGREDIENTS]
-    if (path === '/dogs')        return [...dogs]
+    if (path === '/pets')        return [...pets]
     if (path === '/orders')      return [...orders]
     if (path === '/bowls')       return [...bowls]
 
@@ -39,9 +39,9 @@ export const mockApi = {
   async post(path, body) {
     await delay(500)
 
-    if (path === '/dogs') {
+    if (path === '/pets') {
       const dog = { id: `dog-${++nextDogId}`, user_id: 'mock-user-001', created_at: new Date().toISOString(), ...body }
-      dogs = [...dogs, dog]
+      pets = [...pets, pet]
       return dog
     }
 
@@ -51,7 +51,7 @@ export const mockApi = {
         user_id:     'mock-user-001',
         status:      'confirmed',
         created_at:  new Date().toISOString(),
-        dogs:        dogs.find(d => d.id === body.dog_id) ? { name: dogs.find(d => d.id === body.dog_id).name } : null,
+        pets:        pets.find(d => d.id === body.pet_id) ? { name: pets.find(d => d.id === body.pet_id).name } : null,
         order_items: (body.items || []).map((item, i) => ({ id: `oi-new-${i}`, ...item, order_id: `order-mock${nextOrderId}` })),
         ...body,
       }
@@ -71,10 +71,10 @@ export const mockApi = {
   async put(path, body) {
     await delay(400)
 
-    if (path.startsWith('/dogs/')) {
+    if (path.startsWith('/pets/')) {
       const id = path.split('/')[2]
-      dogs = dogs.map(d => d.id === id ? { ...d, ...body } : d)
-      return dogs.find(d => d.id === id)
+      pets = pets.map(d => d.id === id ? { ...d, ...body } : d)
+      return pets.find(d => d.id === id)
     }
 
     throw new Error(`Mock PUT not implemented for ${path}`)
@@ -101,9 +101,9 @@ export const mockApi = {
   async delete(path) {
     await delay(300)
 
-    if (path.startsWith('/dogs/')) {
+    if (path.startsWith('/pets/')) {
       const id = path.split('/')[2]
-      dogs = dogs.filter(d => d.id !== id)
+      pets = pets.filter(d => d.id !== id)
       return { success: true }
     }
     if (path.startsWith('/bowls/')) {

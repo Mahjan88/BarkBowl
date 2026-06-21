@@ -97,7 +97,7 @@ export default function OrdersPage() {
                     </div>
                     <p className="text-sm text-stone-500">
                       {new Date(order.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                      {order.dogs && ` · For ${order.dogs.name}`}
+                      {order.pets && ` · For ${order.pets.name}`}
                     </p>
                     <p className="text-sm font-semibold text-stone-700 mt-1">
                       ${parseFloat(order.total_amount).toFixed(2)}

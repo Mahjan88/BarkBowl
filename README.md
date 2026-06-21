@@ -1,4 +1,4 @@
-# 🐾 BarkBowl
+# 🐾 PawBowl
 
 > Fresh, customizable dog meals. Build the perfect bowl for your best friend.
 
@@ -9,7 +9,7 @@ A full-stack MVP with React + Vite (frontend), Node.js + Express (backend), and 
 ## Project Structure
 
 ```
-BarkBowl/
+PawBowl/
 ├── frontend/          # React + Vite app
 ├── backend/           # Node.js + Express API
 └── supabase/          # SQL schema & seed data
@@ -99,10 +99,10 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 | GET | `/api/meals` | — | List all active meals |
 | GET | `/api/meals/:id` | — | Single meal |
 | GET | `/api/ingredients` | — | All ingredients grouped by category |
-| GET | `/api/dogs` | ✅ | User's dogs |
-| POST | `/api/dogs` | ✅ | Create dog |
-| PUT | `/api/dogs/:id` | ✅ | Update dog |
-| DELETE | `/api/dogs/:id` | ✅ | Delete dog |
+| GET | `/api/pets` | ✅ | User's pets |
+| POST | `/api/pets` | ✅ | Create pet |
+| PUT | `/api/pets/:id` | ✅ | Update pet |
+| DELETE | `/api/pets/:id` | ✅ | Delete pet |
 | GET | `/api/orders` | ✅ | Order history |
 | POST | `/api/orders` | ✅ | Place order |
 | PATCH | `/api/orders/:id/cancel` | ✅ | Cancel order |
@@ -131,4 +131,4 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 - Loyalty points system
 - Vet/nutritionist consultation booking
 - Admin dashboard for managing menu
-# BarkBowl
+# PawBowl

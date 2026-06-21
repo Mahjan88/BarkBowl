@@ -14,7 +14,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { useRouter } from 'expo-router'
 import { mockApi } from '../lib/mockApi'
 import { useCart } from '../context/CartContext'
-import { MOCK_DOGS } from '../lib/mockData'
+import { MOCK_PETS } from '../lib/mockData'
 import { COLORS, FONTS, RADIUS, SPACING, shadow } from '../lib/theme'
 
 const SUBSCRIPTION_OPTIONS = [
@@ -35,7 +35,7 @@ export default function CheckoutScreen() {
   const [success,       setSuccess]       = useState(false)
   const [orderId,       setOrderId]       = useState(null)
 
-  const dog = MOCK_DOGS[0]
+  const pet = MOCK_PETS[0]
 
   const subOption  = SUBSCRIPTION_OPTIONS.find(s => s.id === subscription)
   const discount   = subOption?.discount || 0
@@ -46,7 +46,7 @@ export default function CheckoutScreen() {
     setLoading(true)
     try {
       const order = await mockApi.post('/orders', {
-        dog_id:            dog?.id,
+        pet_id:            pet?.id,
         total_amount:      parseFloat(finalTotal.toFixed(2)),
         delivery_address:  address.trim(),
         subscription_type: subscription,

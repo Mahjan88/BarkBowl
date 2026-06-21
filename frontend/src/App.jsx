@@ -9,7 +9,7 @@ import BuildBowlPage  from './pages/BuildBowlPage'
 import CartPage       from './pages/CartPage'
 import CheckoutPage   from './pages/CheckoutPage'
 import OrdersPage     from './pages/OrdersPage'
-import DogProfilePage from './pages/DogProfilePage'
+import PetProfilePage from './pages/PetProfilePage'
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth()
@@ -35,7 +35,7 @@ export default function App() {
         <Route path="/cart" element={<ProtectedRoute><CartPage /></ProtectedRoute>} />
         <Route path="/checkout" element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
         <Route path="/orders" element={<ProtectedRoute><OrdersPage /></ProtectedRoute>} />
-        <Route path="/profile" element={<ProtectedRoute><DogProfilePage /></ProtectedRoute>} />
+        <Route path="/profile" element={<ProtectedRoute><PetProfilePage /></ProtectedRoute>} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

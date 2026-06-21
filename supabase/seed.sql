@@ -1,5 +1,5 @@
 -- =============================================
--- BarkBowl Seed Data v2
+-- PawBowl Seed Data v2
 -- Run AFTER schema.sql
 -- =============================================
 -- Note: ingredient_categories and nutrition_rules are

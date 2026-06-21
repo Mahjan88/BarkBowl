@@ -32,7 +32,7 @@ export default function PetTypeScreen() {
   const handleContinue = () => {
     if (!selected) return
     if (selected === 'dog') {
-      router.push('/(onboarding)/dog-setup')
+      router.push('/(onboarding)/pet-setup')
     } else {
       router.push('/(onboarding)/cat-waitlist')
     }

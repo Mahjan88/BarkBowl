@@ -2,12 +2,12 @@
 
 export const MOCK_USER = {
   id:    'mock-user-001',
-  email: 'demo@barkbowl.com',
+  email: 'demo@pawbowl.com',
 }
 
-export const MOCK_DOGS = [
+export const MOCK_PETS = [
   {
-    id:             'dog-001',
+    id:             'pet-001',
     user_id:        'mock-user-001',
     name:           'Bella',
     breed:          'Golden Retriever',
@@ -139,14 +139,14 @@ export const MOCK_ORDERS = [
   {
     id: 'order-abc123def456',
     user_id: 'mock-user-001',
-    dog_id: 'dog-001',
+    pet_id: 'pet-001',
     status: 'out_for_delivery',
     total_amount: 45.98,
     delivery_address: '123 Paw Lane, San Francisco, CA 94105',
     subscription_type: 'weekly',
     notes: '',
     created_at: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
-    dogs: { name: 'Bella', breed: 'Golden Retriever' },
+    pets: { name: 'Bella', breed: 'Golden Retriever' },
     order_items: [
       { id: 'oi-1', order_id: 'order-abc123def456', meal_id: 'meal-004', quantity: 1, unit_price: 24.99, item_name: 'Salmon Skin & Coat Bowl' },
       { id: 'oi-2', order_id: 'order-abc123def456', meal_id: 'meal-001', quantity: 1, unit_price: 18.99, item_name: 'Chicken & Rice Comfort Bowl' },
@@ -155,14 +155,14 @@ export const MOCK_ORDERS = [
   {
     id: 'order-xyz789ghi012',
     user_id: 'mock-user-001',
-    dog_id: 'dog-001',
+    pet_id: 'pet-001',
     status: 'delivered',
     total_amount: 22.99,
     delivery_address: '123 Paw Lane, San Francisco, CA 94105',
     subscription_type: null,
     notes: 'Leave at the door',
     created_at: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
-    dogs: { name: 'Bella', breed: 'Golden Retriever' },
+    pets: { name: 'Bella', breed: 'Golden Retriever' },
     order_items: [
       { id: 'oi-3', order_id: 'order-xyz789ghi012', meal_id: 'meal-002', quantity: 1, unit_price: 22.99, item_name: 'Beef Power Bowl' },
     ],

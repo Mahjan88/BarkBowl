@@ -1,5 +1,5 @@
 -- =============================================
--- BarkBowl Database Schema v2
+-- PawBowl Database Schema v2
 -- Run this in the Supabase SQL Editor
 -- =============================================
 -- Breaking changes from v1:

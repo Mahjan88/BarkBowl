@@ -89,24 +89,24 @@ function DogForm({ dog, onSave, onCancel }) {
 export default function ProfileScreen() {
   const { user, signOut } = useAuth()
   const router = useRouter()
-  const [dogs, setDogs] = useState([])
+  const [pets, setPets] = useState([])
   const [loading, setLoading] = useState(true)
   const [showForm, setShowForm] = useState(false)
-  const [editingDog, setEditingDog] = useState(null)
+  const [editingPet, setEditingDog] = useState(null)
 
   const loadDogs = () =>
-    mockApi.get('/dogs').then(setDogs).finally(() => setLoading(false))
+    mockApi.get('/pets').then(setPets).finally(() => setLoading(false))
 
   useEffect(() => { loadDogs() }, [])
 
   const handleAddDog = async (data) => {
-    await mockApi.post('/dogs', data)
+    await mockApi.post('/pets', data)
     await loadDogs()
     setShowForm(false)
   }
 
   const handleEditDog = async (data) => {
-    await mockApi.put(`/dogs/${editingDog.id}`, data)
+    await mockApi.put(`/pets/${editingPet.id}`, data)
     await loadDogs()
     setEditingDog(null)
   }
@@ -120,7 +120,7 @@ export default function ProfileScreen() {
         {
           text: 'Remove', style: 'destructive',
           onPress: async () => {
-            await mockApi.delete(`/dogs/${dog.id}`)
+            await mockApi.delete(`/pets/${dog.id}`)
             loadDogs()
           },
         },
@@ -173,12 +173,12 @@ export default function ProfileScreen() {
             <ActivityIndicator color={COLORS.primary} style={{ marginTop: 20 }} />
           ) : (
             <>
-              {dogs.map(dog => (
+              {pets.map(dog => (
                 <View key={dog.id} style={styles.dogCard}>
                   <View style={styles.dogCardLeft}>
                     <Text style={styles.dogEmoji}>{activityEmoji(dog.activity_level)}</Text>
                     <View>
-                      <Text style={styles.dogName}>{dog.name}</Text>
+                      <Text style={styles.petName}>{dog.name}</Text>
                       <Text style={styles.dogBreed}>{dog.breed || 'Mixed breed'}</Text>
                       <View style={styles.dogMeta}>
                         {dog.age_years > 0 && (
@@ -212,8 +212,8 @@ export default function ProfileScreen() {
                 </View>
               ))}
 
-              {dogs.length === 0 && (
-                <Text style={styles.emptyDogs}>No dogs added yet. Add your pup!</Text>
+              {pets.length === 0 && (
+                <Text style={styles.emptyPets}>No pets added yet. Add your pup!</Text>
               )}
             </>
           )}
@@ -228,9 +228,9 @@ export default function ProfileScreen() {
           )}
 
           {/* Inline Edit Form */}
-          {editingDog && (
+          {editingPet && (
             <DogForm
-              dog={editingDog}
+              dog={editingPet}
               onSave={handleEditDog}
               onCancel={() => setEditingDog(null)}
             />
@@ -351,7 +351,7 @@ const styles = StyleSheet.create({
     gap:           SPACING.md,
   },
   dogEmoji: { fontSize: 36 },
-  dogName: {
+  petName: {
     fontSize:   FONTS.sizes.lg,
     fontWeight: FONTS.weights.bold,
     color:      COLORS.textPrimary,
@@ -397,7 +397,7 @@ const styles = StyleSheet.create({
   dogDeleteBtn: {
     backgroundColor: '#fef2f2',
   },
-  emptyDogs: {
+  emptyPets: {
     fontSize:  FONTS.sizes.md,
     color:     COLORS.textSecondary,
     textAlign: 'center',
