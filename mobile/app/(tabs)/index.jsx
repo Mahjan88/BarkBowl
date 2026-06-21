@@ -60,7 +60,7 @@ export default function HomeScreen() {
         <View>
           <Text style={styles.greeting}>Hey there! 🐶</Text>
           <Text style={styles.petName}>
-            {dog ? `Feeding ${dog.name} today?` : 'Welcome back!'}
+            {pet ? `Feeding ${pet.name} today?` : 'Welcome back!'}
           </Text>
         </View>
         <TouchableOpacity style={styles.cartBtn} onPress={() => router.push('/cart')}>
